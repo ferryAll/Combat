@@ -7,8 +7,8 @@ class Personnage {
     const CEST_MOI = 1;
     const PERSONNAGE_TUE = 2;
     const PERSONNAGE_FRAPPE = 3;
-    
-    public function frapper(Personnage $perso) {
+
+    public function frapper ( Personnage $perso ) {
         // Avant tout ne pas se frapper soi-même.
         // Si c'est le cas, on stopppe tout en renvoyant une valeur signifiant que le personnage ciblé est le personnage qui attaque.
         // On indique au personnage frappé qu'il doit recevoir des dégats.
@@ -22,8 +22,33 @@ class Personnage {
         // Sinon, elle renverra une valeur signifiant que le personnage a été bien frappé.
     }
 
-    $perso = new Personnage;
-    $perso->_experience = $perso->_experience + 1;
+    public function degats() {
+        return $this->_degats;
+    }
+    
+    public function id() {
+        return $this->_id;
+    }
 
+    public function nom() {
+        return $this->_nom;
+    }
+
+    public function setDegats($degats) {
+        $degats = (int) $degats;
+
+        if ($degats >=0 && $degats <= 100)
+        {
+            $this->_degats = $degats;
+        }
+    }
+
+    public function setId($id)
+    {
+        if (is_string($nom))
+        {
+            $this->_nom = $nom;
+        }
+    }
 }
 
