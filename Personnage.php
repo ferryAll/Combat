@@ -4,6 +4,10 @@ class Personnage {
     private $_degats;
     private $_nom;
 
+    const CEST_MOI = 1;
+    const PERSONNAGE_TUE = 2;
+    const PERSONNAGE_FRAPPE = 3;
+    
     public function frapper(Personnage $perso) {
         // Avant tout ne pas se frapper soi-même.
         // Si c'est le cas, on stopppe tout en renvoyant une valeur signifiant que le personnage ciblé est le personnage qui attaque.
