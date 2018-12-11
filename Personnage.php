@@ -14,5 +14,6 @@ class Personnage {
 
     $perso = new Personnage;
     $perso->_experience = $perso->_experience + 1;
-    
+
 }
+
