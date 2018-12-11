@@ -13,8 +13,11 @@ class Personnage
     {
         $this->hydrate($donnees);
     }
-    
+
     public function frapper ( Personnage $perso ) {
+        if ($perso->id() == $this->_id){
+            return self::CEST_MOI;
+        }
         // Avant tout ne pas se frapper soi-même.
         // Si c'est le cas, on stopppe tout en renvoyant une valeur signifiant que le personnage ciblé est le personnage qui attaque.
         // On indique au personnage frappé qu'il doit recevoir des dégats.
