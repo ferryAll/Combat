@@ -12,7 +12,7 @@ if (isset($_GET['deconnexion']))
   header('Location: .');
   exit();
 }
-$db = new PDO('mysql:host=localhost;dbname=personnages', 'root', '');
+$db = new PDO('mysql:host=localhost;port=3307;dbname=personnages', 'root', '');
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
 $repository = new PersonnagesRepository($db);
 if (isset($_SESSION['perso'])) // Si la session perso existe, on restaure l'objet.
