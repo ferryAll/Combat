@@ -48,6 +48,8 @@ class Personnage
         // Sinon, elle renverra une valeur signifiant que le personnage a été bien frappé.
     }
 
+    // GETTERS //
+
     public function degats() {
         return $this->_degats;
     }
