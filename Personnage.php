@@ -8,7 +8,7 @@ class Personnage {
 
     }
 
-    public function gagnerExperience() {
+    public function recevoirDegats() {
 
     }
 
