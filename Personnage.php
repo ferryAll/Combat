@@ -4,7 +4,7 @@ class Personnage {
     private $_degats;
     private $_nom;
 
-    public function frapper() {
+    public function frapper(Personnage $perso) {
 
     }
 
