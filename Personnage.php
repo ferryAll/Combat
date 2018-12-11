@@ -1,19 +1,6 @@
 <?php
 class Personnage 
 {
-    public function hydrate(array $donnees)
-    {
-        foreach ($donnees as $key => $value)
-        {
-            $method = 'set'.ucfirst($key);
-
-            if (method_exists($this, $method))
-            {
-                $this->$method($value);
-            }
-        }
-    }
-
     private $_id ;
     private $_degats;
     private $_nom;
@@ -22,6 +9,11 @@ class Personnage
     const PERSONNAGE_TUE = 2;
     const PERSONNAGE_FRAPPE = 3;
 
+    public function __construct(array $donnees)
+    {
+        $this->hydrate($donnees);
+    }
+    
     public function frapper ( Personnage $perso ) {
         // Avant tout ne pas se frapper soi-même.
         // Si c'est le cas, on stopppe tout en renvoyant une valeur signifiant que le personnage ciblé est le personnage qui attaque.
