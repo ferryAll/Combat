@@ -1,8 +1,8 @@
 <?php
 class Personnage {
-    private $_force ;
-    private $_experience;
+    private $_id ;
     private $_degats;
+    private $_nom;
 
     public function frapper() {
 
