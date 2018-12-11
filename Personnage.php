@@ -5,11 +5,17 @@ class Personnage {
     private $_nom;
 
     public function frapper(Personnage $perso) {
-
+        // Avant tout ne pas se frapper soi-même.
+        // Si c'est le cas, on stopppe tout en renvoyant une valeur signifiant que le personnage ciblé est le personnage qui attaque.
+        // On indique au personnage frappé qu'il doit recevoir des dégats.
     }
 
     public function recevoirDegats() {
+        // on augmente de 5 les dégats
 
+        // Si on a 100 de dégats ou plus, la méthode renverra une valeur signifiant que le personnage à été tué.
+
+        // Sinon, elle renverra une valeur signifiant que le personnage a été bien frappé.
     }
 
     $perso = new Personnage;
