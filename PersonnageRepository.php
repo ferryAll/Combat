@@ -10,7 +10,7 @@ class PersonnagesRepository
 
     public function add(Personnage $perso)
     {
-        $q = $this->_db->prepare('INSERT INTO personnage(nom) VALUES(:nom)');
+        $q = $this->_db->prepare('INSERT INTO personnages(nom) VALUES(:nom)');
         $q->bindValue(':nom', $perso->nom());
         $q->execute();
 
