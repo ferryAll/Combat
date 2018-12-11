@@ -1,5 +1,19 @@
 <?php
-class Personnage {
+class Personnage 
+{
+    public function hydrate(array $donnees)
+    {
+        foreach ($donnees as $key => $value)
+        {
+            $method = 'set'.ucfirst($key);
+
+            if (method_exists($this, $method))
+            {
+                $this->$method($value);
+            }
+        }
+    }
+
     private $_id ;
     private $_degats;
     private $_nom;
