@@ -21,6 +21,20 @@ class Personnage
         // Avant tout ne pas se frapper soi-même.
         // Si c'est le cas, on stopppe tout en renvoyant une valeur signifiant que le personnage ciblé est le personnage qui attaque.
         // On indique au personnage frappé qu'il doit recevoir des dégats.
+        return $perso->recevoirDegats();
+    }
+
+    public function hydrate(array $donnees)
+    {
+        foreach ($donnees as $key => $value)
+        {
+            $method = 'set'.ucfirst($key);
+
+            if (method_exists($this, $method))
+            {
+                $this->$method($value);
+            }
+        }
     }
 
     public function recevoirDegats() {
