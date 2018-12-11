@@ -53,14 +53,14 @@ class PersonnagesRepository
         {
             $q = $this->_db->query('SELECT id, nom, degats FROM personnages WHERE id= '.$info);
             $donnees = $q->fetch(PDO::FETCH_ASSOC);
-            
+        }
             else
             {
                 $q = $this->_db->prepare('SELECT id, nom, degats FROM personnages WHERE nom = :nom');
                 $q->execute([':nom' => $info]);
             }
             return new Personnage($q->fetch(PDO::FETCH_ASSOC));
-        }
+        
     }
 
     public function getList($nom)
