@@ -4,21 +4,28 @@ function chargerClasse($classname)
 {
   require $classname.'.php';
 }
+
 spl_autoload_register('chargerClasse');
+
 session_start(); // On appelle session_start() APRÈS avoir enregistré l'autoload.
+
 if (isset($_GET['deconnexion']))
 {
   session_destroy();
   header('Location: .');
   exit();
 }
-$db = new PDO('mysql:host=localhost;port=3307;dbname=personnages', 'root', '');
+
+$db = new PDO('mysql:host=localhost;dbname=combats', 'root', '');
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
+
 $repository = new PersonnagesRepository($db);
+
 if (isset($_SESSION['perso'])) // Si la session perso existe, on restaure l'objet.
 {
   $perso = $_SESSION['perso'];
 }
+
 if (isset($_POST['creer']) && isset($_POST['nom'])) // Si on a voulu créer un personnage.
 {
   $perso = new Personnage(['nom' => $_POST['nom']]); // On crée un nouveau personnage.
@@ -38,6 +45,7 @@ if (isset($_POST['creer']) && isset($_POST['nom'])) // Si on a voulu créer un p
     $repository->add($perso);
   }
 }
+
 elseif (isset($_POST['utiliser']) && isset($_POST['nom'])) // Si on a voulu utiliser un personnage.
 {
   if ($repository->exists($_POST['nom'])) // Si celui-ci existe.
@@ -49,6 +57,7 @@ elseif (isset($_POST['utiliser']) && isset($_POST['nom'])) // Si on a voulu util
     $message = 'Ce personnage n\'existe pas !'; // S'il n'existe pas, on affichera ce message.
   }
 }
+
 elseif (isset($_GET['frapper'])) // Si on a cliqué sur un personnage pour le frapper.
 {
   if (!isset($perso))
@@ -109,6 +118,7 @@ if (isset($message)) // On a un message à afficher ?
 {
   echo '<p>', $message, '</p>'; // Si oui, on l'affiche.
 }
+
 if (isset($perso)) // Si on utilise un personnage (nouveau ou pas).
 {
 ?>
@@ -127,10 +137,12 @@ if (isset($perso)) // Si on utilise un personnage (nouveau ou pas).
       <p>
 <?php
 $persos = $repository->getList($perso->nom());
+
 if (empty($persos))
 {
   echo 'Personne à frapper !';
 }
+
 else
 {
   foreach ($persos as $unPerso)

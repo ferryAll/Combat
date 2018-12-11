@@ -15,6 +15,11 @@ class Personnage
     $this->hydrate($donnees);
   }
   
+  public function nomValide()
+  {
+    return !empty($this->_nom);
+  }
+  
   public function frapper(Personnage $perso)
   {
     if ($perso->id() == $this->_id)
@@ -57,6 +62,7 @@ class Personnage
   
   // GETTERS //
   
+
   public function degats()
   {
     return $this->_degats;
